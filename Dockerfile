@@ -6,12 +6,12 @@ RUN apt-get update && \
     groupadd uwsgi && \
     useradd -g uwsgi uwsgi
 
-COPY ./requirements.txt /opt/command-webhook/
+COPY ./requirements.txt /opt/variable-webhook/
 
-RUN pip install -r /opt/command-webhook/requirements.txt
+RUN pip install -r /opt/variable-webhook/requirements.txt
 
-COPY . /opt/command-webhook
+COPY . /opt/variable-webhook
 
 EXPOSE 5018
 
-CMD ["/usr/bin/uwsgi", "--ini", "/opt/command-webhook/uwsgi.ini", "--logto2", "/var/log/webhook/webhook.log"]
+CMD ["/usr/bin/uwsgi", "--ini", "/opt/variable-webhook/uwsgi.ini", "--logto2", "/var/log/webhook/webhook.log"]

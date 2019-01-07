@@ -9,4 +9,4 @@ service docker start || systemctl start docker
 
 mkdir -p /var/log/webhook
 
-git clone https://github.com/lcc2207/scalr-command-webhook.git /opt/command-webhook
+git clone https://github.com/scalr-tutorials/scalr-remote-var-webhook.git /opt/variable-webhook
