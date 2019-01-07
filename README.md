@@ -1,4 +1,4 @@
-# remove Global Varialbes demo webhook
+# Global Varialbes demo webhook
 
 This webhook is used to give an exmpamle of how to use the a remote source for GV in Scalr.
 
