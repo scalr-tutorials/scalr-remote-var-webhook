@@ -1,0 +1,29 @@
+.vagrant
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+
+# Bundler
+Gemfile.lock
+gems.locked
+bin/*
+.bundle/*
+
+# test kitchen
+.kitchen/
+.kitchen.local.yml
+.kitchen-scalr.yml
+
+# Chef
+Berksfile.lock
+.zero-knife.rb
+Policyfile.lock.json
+
+# Scalr Kitchen Keys
+KEY_*
+
+# data bags
+# test/integration/data_bags/xxx/scalr-*.json
