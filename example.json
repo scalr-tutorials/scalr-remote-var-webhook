@@ -1,0 +1,13 @@
+{
+	"list": [{
+		"value": "test_value",
+		"label": "test_Label"
+	}, {
+		"value": "test_vale1"
+	}, {
+		"value": "scalr_test"
+	}, {
+		"value": "scalr_2"
+	}],
+	"ttl": 3
+}
