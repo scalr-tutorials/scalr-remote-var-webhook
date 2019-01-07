@@ -8,7 +8,8 @@ Execute "bootstrap.sh" on the target install
 
 This will install docker and pull down the variable-webhook repo.
 
-# This will by default read the example.json file to provide information to the GV.  You can change this file in the uwsgi.ini file as shown below.
+# Variables File
+This will by default read the example.json file to provide information to the GV.  You can change this file in the uwsgi.ini file as shown below.
 
 # Update the uwsgi.ini file with your settings
 
