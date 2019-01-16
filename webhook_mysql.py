@@ -26,7 +26,7 @@ SCALR_MYSQL_SERVER = os.getenv('SCALR_MYSQL_SERVER')
 SCALR_MYSQL_USER = os.getenv('SCALR_MYSQL_USER')
 SCALR_MYSQL_PASS = os.getenv('SCALR_MYSQL_PASS')
 SCALR_MYSQL_DB = os.getenv('SCALR_MYSQL_DB')
-
+SCALR_QUERY = os.getenv('SCALR_QUERY')
 
 for var in ['SCALR_SIGNING_KEY', 'SCALR_WEBHOOK']:
     logging.info('Config: %s = %s', var, globals()[var] if 'PASS' not in var else '*' * len(globals()[var]))
@@ -38,7 +38,7 @@ def webhook_listener():
 
     mydb = mysql.connector.connect(host=SCALR_MYSQL_SERVER, user=SCALR_MYSQL_USER, passwd=SCALR_MYSQL_PASS, database=SCALR_MYSQL_DB)
     var = mydb.cursor()
-    var.execute("SELECT * FROM variables")
+    var.execute(SCALR_QUERY)
     json_data=[]
     for (name) in var:
         json_data.append({"value": name[0]})
