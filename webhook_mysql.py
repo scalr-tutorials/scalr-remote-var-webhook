@@ -10,6 +10,7 @@ import logging
 import hmac
 import os
 import requests
+import mysql.connector
 
 from requests.exceptions import ConnectionError
 
@@ -26,6 +27,7 @@ SCALR_MYSQL_SERVER = os.getenv('SCALR_MYSQL_SERVER')
 SCALR_MYSQL_USER = os.getenv('SCALR_MYSQL_USER')
 SCALR_MYSQL_PASS = os.getenv('SCALR_MYSQL_PASS')
 SCALR_MYSQL_DB = os.getenv('SCALR_MYSQL_DB')
+SCALR_TTL = os.getenv('SCALR_TTL')
 SCALR_QUERY = os.getenv('SCALR_QUERY')
 
 for var in ['SCALR_SIGNING_KEY', 'SCALR_WEBHOOK']:
@@ -33,16 +35,19 @@ for var in ['SCALR_SIGNING_KEY', 'SCALR_WEBHOOK']:
 
 @app.route('/' + SCALR_WEBHOOK + '/', methods=['POST', 'GET'])
 def webhook_listener():
-    if not validate_request(request):
+    if not validate_request(request, SCALR_SIGNING_KEY):
         abort(403)
 
     mydb = mysql.connector.connect(host=SCALR_MYSQL_SERVER, user=SCALR_MYSQL_USER, passwd=SCALR_MYSQL_PASS, database=SCALR_MYSQL_DB)
     var = mydb.cursor()
     var.execute(SCALR_QUERY)
-    json_data=[]
+    json_data = []
     for (name) in var:
-        json_data.append({"value": name[0]})
-    out={"list": json_data,"ttl": 3 }
+        if name[1] == None:
+            json_data.append({"value": name[0]})
+        else:
+            json_data.append({"value": name[0], "label": name[1]})
+    out = {"list": json_data, "ttl": SCALR_TTL}
     logging.info(out)
     return jsonify(out)
 
