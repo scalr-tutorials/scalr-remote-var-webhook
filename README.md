@@ -23,7 +23,7 @@ workers = 1
 master = true
 plugin = python
 env = SCALR_SIGNING_KEY=scalr_signing_key
-env = SCALR_WEBHOOK=variable  # name of the webhook endpiont ex) http:/xxx:5018/variable2
+env = SCALR_WEBHOOK=variable  # name of the webhook endpiont ex) "variable2" so your full endpiont in scalr would be "http:/xxx:5018/variable2"
 env = SCALR_JSONFILE=example.json
 ```
 
