@@ -30,7 +30,7 @@ for var in ['SCALR_SIGNING_KEY', 'SCALR_WEBHOOK']:
 @app.route('/' + SCALR_WEBHOOK + '/', methods=['POST', 'GET'])
 def webhook_listener():
     logging.info(request)
-    if not validate_request(request):
+    if not validate_request(request, SCALR_SIGNING_KEY):
         abort(403)
     out=json.load(open(SCALR_JSONFILE))
     logging.info(out)
