@@ -34,5 +34,8 @@ env = SCALR_TTL=10
 env = SCALR_QUERY=SELECT * FROM variables
 ```
 
+# Base installation
+curl -L https://raw.githubusercontent.com/scalr-tutorials/scalr-remote-var-webhook/master/bootstrap.sh | bash
+
 # Launch
 execute 'relaunch.sh'
