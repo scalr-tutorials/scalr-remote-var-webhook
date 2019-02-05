@@ -12,6 +12,4 @@ RUN pip install -r /opt/variable-webhook/requirements.txt
 
 COPY . /opt/variable-webhook
 
-EXPOSE 5018
-
-CMD ["/usr/bin/uwsgi", "--ini", "/opt/variable-webhook/uwsgi.ini", "--logto2", "/var/log/webhook/webhook.log"]
+CMD ["/usr/bin/uwsgi", "--ini", "/opt/variable-webhook/uwsgi.ini", "--logto2", "/var/log/webhook/variable-webhook.log"]
